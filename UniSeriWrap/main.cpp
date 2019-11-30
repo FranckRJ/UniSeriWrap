@@ -71,7 +71,8 @@ int main()
     Point p;
     Line l;
 
-    otherSerializerWrapper.deserializeFromString(R"~({"int":159,"double":5.3,"string":"strval","point":{"x":10,"y":20},"line":{"first":{"x":100,"y":200},"second":{"x":300,"y":400}}})~");
+    otherSerializerWrapper.deserializeFromString(
+        R"~({"int":159,"double":5.3,"string":"strval","point":{"x":10,"y":20},"line":{"first":{"x":100,"y":200},"second":{"x":300,"y":400}}})~");
 
     otherSerializerWrapper.fill("int", i);
     otherSerializerWrapper.fill("double", d);
