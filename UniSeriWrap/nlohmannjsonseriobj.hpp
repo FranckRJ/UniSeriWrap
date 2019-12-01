@@ -23,12 +23,17 @@ namespace usw
             obj[name] = val;
         }
 
-        void set(const std::string& name, std::string val)
+        void set(const std::string& name, const std::string& val)
         {
-            obj[name] = std::move(val);
+            obj[name] = val;
         }
 
-        void set(const std::string& name, NlohmannJsonSeriObj val)
+        void set(const std::string& name, const NlohmannJsonSeriObj& val)
+        {
+            obj[name] = val.obj;
+        }
+
+        void set(const std::string& name, NlohmannJsonSeriObj&& val)
         {
             obj[name] = std::move(val.obj);
         }
