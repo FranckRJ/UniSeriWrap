@@ -56,7 +56,7 @@ namespace usw
 
         template <class ValType>
         auto set(const std::string& name, const ValType& val, int)
-            -> decltype(std::declval<UniSeriObjWrapper<SeriObjType>>().seriObj.set(name, val), void())
+            -> decltype(std::declval<SeriObjType>().set(name, val), void())
         {
             seriObj.set(name, val);
         }
@@ -73,7 +73,7 @@ namespace usw
 
         template <class ValType>
         auto fill(const std::string& name, ValType& val, int) const
-            -> decltype(std::declval<UniSeriObjWrapper<SeriObjType>>().seriObj.fill(name, val), void())
+            -> decltype(std::declval<SeriObjType>().fill(name, val), void())
         {
             seriObj.fill(name, val);
         }

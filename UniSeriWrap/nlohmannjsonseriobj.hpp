@@ -36,12 +36,12 @@ namespace usw
         template <class ValType, std::enable_if_t<std::is_arithmetic<ValType>::value, int> = 0>
         void fill(const std::string& name, ValType& val) const
         {
-            val = obj[name].get<ValType>();
+            val = obj[name].template get<ValType>();
         }
 
         void fill(const std::string& name, std::string& val) const
         {
-            val = obj[name].get<std::string>();
+            val = obj[name].template get<std::string>();
         }
 
         ConstRefObjType getSubObj(const std::string& name) const
