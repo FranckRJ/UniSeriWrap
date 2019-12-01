@@ -83,7 +83,7 @@ namespace usw
         {
             using usw::fromSeriObj;
 
-            UniSeriObjWrapper<SeriConstRefObjType> refSeriObjWrapper{seriObj.getSubObj(name)};
+            UniSeriObjWrapper<SeriConstRefObjType> refSeriObjWrapper{seriObj.getSubObjRef(name)};
             fromSeriObj(refSeriObjWrapper, val);
         }
 

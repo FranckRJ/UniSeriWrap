@@ -49,7 +49,7 @@ namespace usw
             val = obj[name].template get<std::string>();
         }
 
-        ConstRefObjType getSubObj(const std::string& name) const
+        ConstRefObjType getSubObjRef(const std::string& name) const
         {
             return ConstRefObjType{obj[name]};
         }
