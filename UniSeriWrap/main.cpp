@@ -23,25 +23,28 @@ void fromSeriObj(const usw::UniSeriObjWrapper<T>& seriObjWrapper, Point& obj)
     seriObjWrapper.fill("y", obj.y);
 }
 
-struct Line
+namespace something
 {
-    Point first;
-    Point second;
-};
+    struct Line
+    {
+        Point first;
+        Point second;
+    };
 
-template <class T>
-void toSeriObj(usw::UniSeriObjWrapper<T>& seriObjWrapper, const Line& obj)
-{
-    seriObjWrapper.set("first", obj.first);
-    seriObjWrapper.set("second", obj.second);
-}
+    template <class T>
+    void toSeriObj(usw::UniSeriObjWrapper<T>& seriObjWrapper, const Line& obj)
+    {
+        seriObjWrapper.set("first", obj.first);
+        seriObjWrapper.set("second", obj.second);
+    }
 
-template <class T>
-void fromSeriObj(const usw::UniSeriObjWrapper<T>& seriObjWrapper, Line& obj)
-{
-    seriObjWrapper.fill("first", obj.first);
-    seriObjWrapper.fill("second", obj.second);
-}
+    template <class T>
+    void fromSeriObj(const usw::UniSeriObjWrapper<T>& seriObjWrapper, Line& obj)
+    {
+        seriObjWrapper.fill("first", obj.first);
+        seriObjWrapper.fill("second", obj.second);
+    }
+} // namespace something
 
 int main()
 {
@@ -56,7 +59,7 @@ int main()
 
     serializerWrapper.set("myPoint", Point{1, 2});
 
-    serializerWrapper.set("myLine", Line{Point{1, 2}, Point{3, 4}});
+    serializerWrapper.set("myLine", something::Line{Point{1, 2}, Point{3, 4}});
 
     std::cout << serializerWrapper.serializeToString() << std::endl;
 
@@ -69,7 +72,7 @@ int main()
     double d;
     std::string s;
     Point p;
-    Line l;
+    something::Line l;
 
     otherSerializerWrapper.deserializeFromString(
         R"~({"int":159,"double":5.3,"string":"strval","point":{"x":10,"y":20},"line":{"first":{"x":100,"y":200},"second":{"x":300,"y":400}}})~");
